@@ -13,6 +13,10 @@ import com.example.demo.repository.ItemRepository;
 import com.example.demo.repository.LocationRepository;
 import com.example.demo.repository.PersonRepository;
 import com.example.demo.repository.UnitRepository;
+import com.example.demo.service.ItemService;
+import com.example.demo.service.LocationService;
+import com.example.demo.service.PersonService;
+import com.example.demo.service.UnitService;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -77,7 +81,48 @@ public class MessingWithData {
         public  String hostAndPort = "http://localhost:8081/";
         public  String[] repositories = new String[]{"units","persons","items","locations"};
     
+        @Autowired
+                    public void setUnitService(UnitService unitService) {
+        this.unitService = unitService;
+    }
+        UnitService unitService;
+                @Autowired
+                    public void setPersonService(PersonService personService) {
+        this.personService = personService;
+    }
+        PersonService personService;
+                                
+        ItemService itemService;
+@Autowired
+    public void setItemService(ItemService itemService) {
+        this.itemService = itemService;
+    }
+LocationService locationService;
+@Autowired
+    public void setLocationService(LocationService locationService) {
+        this.locationService = locationService;
+    }
+        
     public   void getData() {
+        
+        Iterable<Unit> units = unitService.getAll();
+        for(Unit tmp : units)
+            System.out.println(tmp);
+               
+        Iterable<Person> persons = personService.getAll();                
+        for(Person tmp : persons)
+            System.out.println(tmp);
+        
+        Iterable<Item> items = itemService.getAll();                
+        for(Item tmp : items)
+            System.out.println(tmp);
+        
+        //locations
+        Iterable<Location> locations = locationService.getAll();                
+        for(Location tmp : locations)
+            System.out.println(tmp);
+                
+        /*
 ArrayList<Unit> units = getUnits(hostAndPort+repositories[0]);
         for(Unit tmp : units)
             System.out.println(tmp);
@@ -93,6 +138,7 @@ ArrayList<Unit> units = getUnits(hostAndPort+repositories[0]);
         ArrayList<Location> locations = getLocations(hostAndPort+repositories[3]);
         for(Location tmp : locations)
             System.out.println(tmp);
+*/
     }
         
         
