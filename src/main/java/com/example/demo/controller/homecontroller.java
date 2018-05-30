@@ -6,7 +6,9 @@
 package com.example.demo.controller;
 
 import com.example.demo.domain.Item;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,20 +20,6 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/item")
 public class homecontroller {
-    
-    @RequestMapping("/add")
-        public ModelAndView add() {
-        
-        //logger.debug("ItemController.add()");
-        
-        System.out.println("com.example.demo.controller.homecontroller.add()");
-        
-        ModelAndView model = new ModelAndView("addItem");
-        
-        //Person p = new Person();p.setName("Name");
-        model.addObject("item", new Item());
-        
-        return model;
-    }
+
     
 }
