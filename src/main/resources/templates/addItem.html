@@ -11,14 +11,53 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1 th:text="${obj.code}"></h1><br>
-         
-            <form method="post" action="/item/add">
-                Name: <input type="text" name="name"> <br>
-                Code: <input type="text" name="code"> <br>
-                Description: <input type="text" name="description"> <br>
-                <button type="submit">Save</button>
-            </form>
+
+        
+                 <form  method="post" action="/item/add" >
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" name="name" /></td>
+<!--                    <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>-->
+                </tr>
+                <tr>
+                    <td>Code:</td>
+                    <td><input type="text" name="code" /></td>
+<!--                    <td th:if="${#fields.hasErrors('code')}" th:errors="*{code}">Code Error</td>-->
+                </tr>
+                                <tr>
+                    <td>Description:</td>
+                    <td><input type="text" name="description" /></td>
+<!--                    <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Description Error</td>-->
+                </tr>
+                <tr>
+                    <td><button type="submit">Submit</button></td>
+                </tr>
+            </table>
+        </form>
+        
+<!--         <form action="/item/add" th:action="@{/item/add}" th:object="${item}" method="post">
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" th:field="*{name}" /></td>
+                    <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+                </tr>
+                <tr>
+                    <td>Code:</td>
+                    <td><input type="text" th:field="*{code}" /></td>
+                    <td th:if="${#fields.hasErrors('code')}" th:errors="*{code}">Code Error</td>
+                </tr>
+                                <tr>
+                    <td>Description:</td>
+                    <td><input type="text" th:field="*{description}" /></td>
+                    <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Description Error</td>
+                </tr>
+                <tr>
+                    <td><button type="submit">Submit</button></td>
+                </tr>
+            </table>
+        </form>-->
          
     </body>
 </html>
