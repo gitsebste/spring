@@ -35,4 +35,8 @@ public class LocationService {
         public Iterable<Location> getAll(){
 return locationRepository.findAll();
     }
+
+    public void save(Location location) {
+        locationRepository.save(location);
+    }
 }

@@ -6,7 +6,9 @@
 package com.example.demo.controller;
 
 import com.example.demo.domain.Item;
+import com.example.demo.domain.Unit;
 import com.example.demo.service.ItemService;
+import com.example.demo.service.UnitService;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,17 +21,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author device02
  */
 @Controller
-@RequestMapping("/item")
-public class ItemController {
+@RequestMapping("/unit")
+public class UnitController {
     
     
-    ItemService service;
+    UnitService service;
 
-    public ItemService getService() {
+    public UnitService getService() {
         return service;
     }
     @Autowired
-    public void setService(ItemService service) {
+    public void setService(UnitService service) {
         this.service = service;
     }
         
@@ -46,7 +48,7 @@ public class ItemController {
         
         
         
-        return  "addItem";        
+        return  "addUnit";        
     }
             @RequestMapping(value="/add",method=RequestMethod.POST)
         public String added(HttpServletRequest httpServletRequest,Model model) {
@@ -55,8 +57,8 @@ public class ItemController {
         //System.out.println("com.example.demo.controller.homecontroller.add()");
         
         String name = httpServletRequest.getParameter("name");
-        String code = httpServletRequest.getParameter("code");
-        String description = httpServletRequest.getParameter("description");
+        String shortName = httpServletRequest.getParameter("shortName");
+        
         
         
         //sending object to model&view
@@ -69,10 +71,10 @@ public class ItemController {
         
         
                 //System.out.println("Successfully validated. Adding to database...");
-                //System.out.println(name +" "+ code+" "+description);
-                service.save(new Item(code, name, description));
+                //System.out.println(new Unit(name, shortName));
+                service.save(new Unit(name, shortName));
         
-        return  "addItem";        
+        return  "addUnit";        
     }
     
 }

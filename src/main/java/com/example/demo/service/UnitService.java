@@ -32,4 +32,11 @@ public class UnitService {
         public Iterable<Unit> getAll(){
 return unitRepository.findAll();
     }
+
+    public void save(Unit unit) {
+        unitRepository.save(unit);
+    }
+        public Unit getByShortName(String name) {
+        return unitRepository.findByShortName(name);
+    }
 }

@@ -17,6 +17,7 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 
+
 /**
  *
  * @author device02
@@ -33,6 +34,15 @@ public class Person implements Serializable {//implements Emailable{
     private String email;    
     @ManyToOne
     private Unit unit;
+
+    public Person(String name, String lastName, String email, Unit unit) {
+        this.name = name;
+        this.lastName = lastName;
+        this.email = email;
+        this.unit = unit;
+    }
+    
+    
     
     //private String unitShortName;
 
@@ -58,12 +68,6 @@ public class Person implements Serializable {//implements Emailable{
         this.unit = unit;
     }
 
-    public Person(Integer id, String name, String lastName, String email) {
-        this.id = id;
-        this.name = name;
-        this.lastName = lastName;
-        this.email = email;
-    }
 
     public String getLastName() {
         return lastName;
@@ -109,5 +113,12 @@ public class Person implements Serializable {//implements Emailable{
 
     public Person() {
     }
+
+    public Person(String name, String lastName, String email) {
+        this.name = name;
+        this.lastName = lastName;
+        this.email = email;
+    }
+    
     
 }

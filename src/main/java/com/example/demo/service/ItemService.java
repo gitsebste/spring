@@ -36,4 +36,8 @@ public class ItemService {
         public Iterable<Item> getAll(){
 return itemRepository.findAll();
     }
+           public void save(Item i){
+               if(itemRepository==null)System.out.println("itemRepository==null");
+               itemRepository.save(i);
+    }    
 }

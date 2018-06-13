@@ -25,9 +25,15 @@ public class Unit implements Serializable {
     @NotEmpty @Column(unique=true)
     private String name;
     @NotEmpty @Column(unique=true)
-    private String shortName;
-//    @OneToOne
-//    private UserWithAccessLevel head;
+    private String shortName; 
+
+    public Unit(String name, String shortName) {
+        this.name = name;
+        this.shortName = shortName;
+    }
+
+    public Unit() {
+    }
 
     @Override
     public String toString() {

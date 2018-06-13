@@ -41,6 +41,11 @@ public class Item implements Serializable {
     private Person person;
     @ManyToOne(cascade=CascadeType.ALL)
     private Unit unit;
+
+    public Item() {
+    }
+    
+    
     
     //private Integer locationId;
     //private String locationName;
@@ -85,6 +90,12 @@ public class Item implements Serializable {
 //    }
     
     //private Integer unitId;
+
+    public Item(String code, String name, String description) {
+        this.code = code;
+        this.name = name;
+        this.description = description;
+    }
     
     
 

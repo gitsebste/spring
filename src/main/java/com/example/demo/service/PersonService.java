@@ -34,4 +34,8 @@ public class PersonService {
         public Iterable<Person> getAll(){
 return personRepository.findAll();
     }
+
+    public void save(Person person) {
+        personRepository.save(person);
+    }
 }

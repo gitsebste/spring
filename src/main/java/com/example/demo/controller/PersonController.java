@@ -6,7 +6,11 @@
 package com.example.demo.controller;
 
 import com.example.demo.domain.Item;
+import com.example.demo.domain.Person;
+import com.example.demo.domain.Unit;
 import com.example.demo.service.ItemService;
+import com.example.demo.service.PersonService;
+import com.example.demo.service.UnitService;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,17 +23,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author device02
  */
 @Controller
-@RequestMapping("/item")
-public class ItemController {
+@RequestMapping("/person")
+public class PersonController {
     
     
-    ItemService service;
+    PersonService service;UnitService uservice;
 
-    public ItemService getService() {
+    public PersonService getService() {
         return service;
     }
     @Autowired
-    public void setService(ItemService service) {
+    public void setService(PersonService service) {
         this.service = service;
     }
         
@@ -46,7 +50,7 @@ public class ItemController {
         
         
         
-        return  "addItem";        
+        return  "addPerson";        
     }
             @RequestMapping(value="/add",method=RequestMethod.POST)
         public String added(HttpServletRequest httpServletRequest,Model model) {
@@ -55,8 +59,9 @@ public class ItemController {
         //System.out.println("com.example.demo.controller.homecontroller.add()");
         
         String name = httpServletRequest.getParameter("name");
-        String code = httpServletRequest.getParameter("code");
-        String description = httpServletRequest.getParameter("description");
+        String lastName = httpServletRequest.getParameter("lastName");
+        String email = httpServletRequest.getParameter("email");
+        String unitShortName = httpServletRequest.getParameter("unitShortName");
         
         
         //sending object to model&view
@@ -65,14 +70,17 @@ public class ItemController {
         //<h1 th:text="${obj.code}"></h1><br>
         
         //validation in code and in html
+        //System.out.println("Successfully validated. Adding to database...");
+        //System.out.println(name +" "+ code+" "+description);
+        //for(int i=0;i<3;i++)System.out.println(); 
+        //System.out.println(unitShortName);   
+        Unit unit = uservice.getByShortName(unitShortName);
+        //System.out.println(unit);   
+        //for(int i=0;i<3;i++)System.out.println(); 
         
+        service.save(new Person(name, lastName, email,unit));
         
-        
-                //System.out.println("Successfully validated. Adding to database...");
-                //System.out.println(name +" "+ code+" "+description);
-                service.save(new Item(code, name, description));
-        
-        return  "addItem";        
+        return  "addPerson";        
     }
     
 }

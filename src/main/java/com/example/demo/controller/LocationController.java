@@ -6,7 +6,9 @@
 package com.example.demo.controller;
 
 import com.example.demo.domain.Item;
+import com.example.demo.domain.Location;
 import com.example.demo.service.ItemService;
+import com.example.demo.service.LocationService;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,17 +21,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author device02
  */
 @Controller
-@RequestMapping("/item")
-public class ItemController {
+@RequestMapping("/location")
+public class LocationController {
     
     
-    ItemService service;
+    LocationService service;
 
-    public ItemService getService() {
+    public LocationService getService() {
         return service;
     }
     @Autowired
-    public void setService(ItemService service) {
+    public void setService(LocationService service) {
         this.service = service;
     }
         
@@ -46,7 +48,7 @@ public class ItemController {
         
         
         
-        return  "addItem";        
+        return  "addLocation";        
     }
             @RequestMapping(value="/add",method=RequestMethod.POST)
         public String added(HttpServletRequest httpServletRequest,Model model) {
@@ -54,9 +56,11 @@ public class ItemController {
         //logger.debug("ItemController.add()");
         //System.out.println("com.example.demo.controller.homecontroller.add()");
         
-        String name = httpServletRequest.getParameter("name");
-        String code = httpServletRequest.getParameter("code");
+        String name = httpServletRequest.getParameter("name");        
         String description = httpServletRequest.getParameter("description");
+        float building = Float.valueOf(httpServletRequest.getParameter("building"));
+        float room = Float.valueOf(httpServletRequest.getParameter("room"));
+        int floor = Integer.valueOf(httpServletRequest.getParameter("floor"));
         
         
         //sending object to model&view
@@ -70,7 +74,7 @@ public class ItemController {
         
                 //System.out.println("Successfully validated. Adding to database...");
                 //System.out.println(name +" "+ code+" "+description);
-                service.save(new Item(code, name, description));
+                service.save(new Location(name, description, building, room, floor));
         
         return  "addItem";        
     }

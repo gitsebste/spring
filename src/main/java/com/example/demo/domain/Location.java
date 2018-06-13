@@ -31,6 +31,17 @@ public class Location implements Serializable {
     private float room;
     private int floor;
 
+    public Location(String name, String description, float building, float room, int floor) {
+        this.name = name;
+        this.description = description;
+        this.building = building;
+        this.room = room;
+        this.floor = floor;
+    }
+
+    public Location() {
+    }
+
     @Override
     public String toString() {
         return "Location{" + "id=" + id + ", name=" + name + ", description=" + description + ", building=" + building + ", room=" + room + ", floor=" + floor + '}';
