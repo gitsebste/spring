@@ -39,4 +39,8 @@ return unitRepository.findAll();
         public Unit getByShortName(String name) {
         return unitRepository.findByShortName(name);
     }
+
+    public Object getById(int id) {
+        return unitRepository.findById(id);
+    }
 }

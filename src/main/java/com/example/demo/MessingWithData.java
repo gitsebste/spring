@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.example.demo.JsonResponse;
+package com.example.demo;
 
 import com.example.demo.domain.Item;
 import com.example.demo.domain.Location;

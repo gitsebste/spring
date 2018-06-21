@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import com.example.demo.JsonResponse.MessingWithData;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -33,7 +32,7 @@ public class DemoApplication implements CommandLineRunner{//, ApplicationContext
                 boolean debugMode=true;
                 if(debugMode){
                  //= new MessingWithData();
-                    messingWithData.saveData();
+                    //messingWithData.saveData();
                     messingWithData.getData();
                 }
                      
