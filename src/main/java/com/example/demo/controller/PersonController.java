@@ -29,6 +29,11 @@ public class PersonController {
     
     PersonService service;UnitService uservice;
 
+    @Autowired
+    public void setUservice(UnitService uservice) {
+        this.uservice = uservice;
+    }
+
     public PersonService getService() {
         return service;
     }
@@ -50,7 +55,7 @@ public class PersonController {
         
         
         
-        return  "addPerson";        
+        return  "addPerson_1";        
     }
             @RequestMapping(value="/add",method=RequestMethod.POST)
         public String added(HttpServletRequest httpServletRequest,Model model) {
@@ -80,7 +85,7 @@ public class PersonController {
         
         service.save(new Person(name, lastName, email,unit));
         
-        return  "addPerson";        
+        return  "addPerson_1";        
     }
     
 }

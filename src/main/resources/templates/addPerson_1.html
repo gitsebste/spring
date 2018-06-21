@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Adding unit</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+
+        
+                 <form  method="post" action="/person/add" >
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" name="name" /></td>
+<!--                    <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>-->
+                </tr>
+                <tr>
+                    <td>Last Name:</td>
+                    <td><input type="text" name="lastName" /></td>
+<!--                    <td th:if="${#fields.hasErrors('code')}" th:errors="*{code}">Code Error</td>-->
+                </tr>
+                                <tr>
+                    <td>Email:</td>
+                    <td><input type="text" name="email" /></td>
+<!--                    <td th:if="${#fields.hasErrors('code')}" th:errors="*{code}">Code Error</td>-->
+                </tr>
+                                                <tr>
+                    <td>Unit Short Name:</td>
+                    <td><input type="text" name="unitShortName" /></td>
+<!--                    <td th:if="${#fields.hasErrors('code')}" th:errors="*{code}">Code Error</td>-->
+                </tr>
+<!--                                <tr>
+                    <td>Description:</td>
+                    <td><input type="text" name="description" /></td>
+                    <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Description Error</td>
+                </tr>-->
+                <tr>
+                    <td><button type="submit">Submit</button></td>
+                </tr>
+            </table>
+        </form>
+        
+<!--         <form action="/item/add" th:action="@{/item/add}" th:object="${item}" method="post">
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" th:field="*{name}" /></td>
+                    <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+                </tr>
+                <tr>
+                    <td>Code:</td>
+                    <td><input type="text" th:field="*{code}" /></td>
+                    <td th:if="${#fields.hasErrors('code')}" th:errors="*{code}">Code Error</td>
+                </tr>
+                                <tr>
+                    <td>Description:</td>
+                    <td><input type="text" th:field="*{description}" /></td>
+                    <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Description Error</td>
+                </tr>
+                <tr>
+                    <td><button type="submit">Submit</button></td>
+                </tr>
+            </table>
+        </form>-->
+         
+    </body>
+</html>
