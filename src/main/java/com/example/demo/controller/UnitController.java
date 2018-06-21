@@ -76,7 +76,7 @@ public class UnitController {
                 //System.out.println(new Unit(name, shortName));
                 service.save(new Unit(name, shortName));
         
-        return  "addUnit";        
+        return  "home";        
     }
         
             @RequestMapping(value="/showAll",method=RequestMethod.GET)
@@ -92,10 +92,17 @@ public class UnitController {
         return  "showUnits";        
     }
                             @RequestMapping(value="/chosenByUser/{id}",method=RequestMethod.GET)
-        public String showByShortName(HttpServletRequest httpServletRequest,Model model,@PathVariable("id") int id) {
+        public String showById(HttpServletRequest httpServletRequest,Model model,@PathVariable("id") int id) {
             model.addAttribute("el", service.getById(id));
             //model.addAttribute("unit", new Unit());
         return  "showUnit";        
+    }
+        
+                                    @RequestMapping(value="/delete/{id}",method=RequestMethod.GET)
+        public String deleteById(HttpServletRequest httpServletRequest,Model model,@PathVariable("id") int id) {
+            //model.addAttribute("el", service.getById(id));
+            service.deleteById(id);
+        return  "home";        
     }
         
                                     @RequestMapping(value="/save",method=RequestMethod.GET)

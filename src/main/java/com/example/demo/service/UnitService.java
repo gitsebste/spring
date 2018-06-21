@@ -43,4 +43,8 @@ return unitRepository.findAll();
     public Object getById(int id) {
         return unitRepository.findById(id);
     }
+
+    public void deleteById(int id) {
+        unitRepository.deleteById(id);
+    }
 }

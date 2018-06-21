@@ -28,12 +28,14 @@ and open the template in the editor.
         <table>
    <th:block th:each="el : ${iterable}">
       <tr>
-          <form  method="get" th:action="@{/unit/chosenByUser/{path}(path=${el.id})}">
+          
          <td th:text="${el.id}">...</td>
          <td th:text="${el.name}">...</td>
          <td th:text="${el.shortName}">...</td>
-         <td><button type="submit">Szczegóły/Edycja</button></td>
-         </form>
+         <td><form  method="get" th:action="@{/unit/chosenByUser/{path}(path=${el.id})}">
+                 <button type="submit">Szczegóły/Edycja</button></form></td>
+         <td><form  method="get" th:action="@{/unit/delete/{path}(path=${el.id})}">
+                 <button type="submit">Usuń</button></form></td>
       </tr>
 <!--      <tr>
          <td colspan="2" th:text="${user.address}">...</td>
