@@ -38,4 +38,16 @@ return personRepository.findAll();
     public void save(Person person) {
         personRepository.save(person);
     }
+
+    public Person getById(int id) {
+        return personRepository.findById(id);
+    }
+
+    public void deleteById(int id) {
+        personRepository.deleteById(id);
+    }
+
+    public Iterable<Person> getByLastName(String lastName) {
+        return personRepository.findByLastName(lastName);
+    }
 }

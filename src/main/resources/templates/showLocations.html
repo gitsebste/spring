@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Adding item</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+       
+        
+<!--                <form  method="get" action="/unit/byShortName" >
+            <table>
+                <tr>
+                    <td>Jednostka: szukanie po krótkiej nazwie:
+                     <input type="text" name="shortName" />
+                        <button type="submit">Szukaj</button></td>
+                </tr>
+            </table>
+        </form>-->
+        
+        
+        
+        <table>
+   <th:block th:each="el : ${iterable}">
+      <tr>
+          
+         <td th:text="${el.id}">...</td>
+         <td th:text="${el.name}">...</td>
+         <td th:text="${el.building}">...</td>
+         <td th:text="${el.room}">...</td>
+         <td th:text="${el.floor}">...</td>
+         <td><form  method="get" th:action="@{/location/chosenByUser/{path}(path=${el.id})}">
+                 <button type="submit">Szczegóły/Edycja</button></form></td>
+         <td><form  method="get" th:action="@{/location/delete/{path}(path=${el.id})}">
+                 <button type="submit">Usuń</button></form></td>
+      </tr>
+<!--      <tr>
+         <td colspan="2" th:text="${user.address}">...</td>
+      </tr>-->
+   </th:block>
+</table>
+         
+    </body>
+</html>

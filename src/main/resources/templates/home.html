@@ -9,6 +9,24 @@ and open the template in the editor.
         <title>Adding unit</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+table td {
+    width: 300px;
+    white-space: nowrap;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+</style>
+        
+        
     </head>
     <body>
 
@@ -16,7 +34,7 @@ and open the template in the editor.
                  <form  method="get" action="/unit/showAll" >
             <table>
                 <tr>
-                    <td>Jednostka: wszystkie jednostki
+                    <td>Jednostka: wszystkie</td><td></td><td>
                         <button type="submit">Pokaż wszystkie</button></td>
                 </tr>
             </table>
@@ -25,20 +43,108 @@ and open the template in the editor.
         <form  method="get" action="/unit/byShortName" >
             <table>
                 <tr>
-                    <td>Jednostka: szukanie po krótkiej nazwie
-                     <input type="text" name="shortName" />
-                        <button type="submit">Szukaj</button></td>
+                    <td>Jednostka: szukanie po krótkiej nazwie</td>
+                     <td><input type="text" name="shortName" /></td>
+                        <td><button type="submit">Szukaj</button></td>
                 </tr>
             </table>
         </form>
                 <form  method="get" action="/unit/add" >
             <table>
                 <tr>
-                    <td>Jednostka: nowa
-                        <button type="submit">Stwórz</button></td>
+                    <td>Jednostka: nowa</td><td></td>
+                        <td><button type="submit">Stwórz</button></td>
+                </tr>
+            </table>
+        </form>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+                         <form  method="get" action="/location/showAll" >
+            <table>
+                <tr>
+                    <td>Lokalizacja: wszystkie</td><td></td>
+                        <td><button type="submit">Pokaż wszystkie</button></td>
+                </tr>
+            </table>
+        </form>
+                        <form  method="get" action="/location/add" >
+            <table>
+                <tr>
+                    <td>Lokalizacja: nowa</td><td></td>
+                        <td><button type="submit">Stwórz</button></td>
                 </tr>
             </table>
         </form>
          
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+                                 <form  method="get" action="/person/showAll" >
+            <table>
+                <tr>
+                    <td>Osoba: wszystkie</td><td></td>
+                        <td><button type="submit">Pokaż wszystkie</button></td>
+                </tr>
+            </table>
+        </form>
+                                         <form  method="get" action="/person/byLastName" >
+            <table>
+                <tr>
+                    <td>Osoba: szukanie po nazwisku</td> 
+                    <td><input type="text" name="lastName" /></td>
+                        <td><button type="submit">Szukaj</button></td>
+                </tr>
+            </table>
+        </form>
+                        <form  method="get" action="/person/add" >
+            <table>
+                <tr>
+                    <td>Osoba: nowa</td><td></td>
+                        <td><button type="submit">Stwórz</button></td>
+                </tr>
+            </table>
+        </form>
+        
+        
+        
+        
+        
+        
+        
+        
+                                 <form  method="get" action="/item/showAll" >
+            <table>
+                <tr>
+                    <td>Przedmiot: wszystkie</td><td></td>
+                        <td><button type="submit">Pokaż wszystkie</button></td>
+                </tr>
+            </table>
+        </form>
+                        <form  method="get" action="/item/add" >
+            <table>
+                <tr>
+                    <td>Przedmiot: nowy</td><td></td>
+                        <td><button type="submit">Stwórz</button></td>
+                </tr>
+            </table>
+        </form>
+        
+        
+        
+        
     </body>
 </html>

@@ -6,11 +6,13 @@
 package com.example.demo.controller;
 
 import com.example.demo.domain.Item;
+import com.example.demo.domain.Person;
 import com.example.demo.service.ItemService;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -74,5 +76,26 @@ public class ItemController {
         
         return  "addItem";        
     }
-    
+                            @RequestMapping(value="/showAll",method=RequestMethod.GET)
+        public String showAll(HttpServletRequest httpServletRequest,Model model) {  
+            model.addAttribute("iterable", service.getAll());
+        return  "showItems";        
+    }
+        @RequestMapping(value="/chosenByUser/{id}",method=RequestMethod.GET)
+        public String showById(HttpServletRequest httpServletRequest,Model model,@PathVariable("id") int id) {
+            model.addAttribute("el", service.getById(id));
+        return  "showItem";
+    }
+        @RequestMapping(value="/save",method=RequestMethod.GET)
+        public String save(HttpServletRequest httpServletRequest,Model model ) {            
+            String id = httpServletRequest.getParameter("id");
+            String name = httpServletRequest.getParameter("name");
+            String code = httpServletRequest.getParameter("code");
+            String description = httpServletRequest.getParameter("description");
+        Item item = new Item(code, name, description);
+            item.setId(Integer.valueOf(id));
+            service.save(item);
+            
+        return  "home";        
+    }
 }

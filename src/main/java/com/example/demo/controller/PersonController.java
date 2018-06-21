@@ -6,6 +6,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.domain.Item;
+import com.example.demo.domain.Location;
 import com.example.demo.domain.Person;
 import com.example.demo.domain.Unit;
 import com.example.demo.service.ItemService;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -87,5 +89,40 @@ public class PersonController {
         
         return  "addPerson_1";        
     }
-    
+                        @RequestMapping(value="/showAll",method=RequestMethod.GET)
+        public String showAll(HttpServletRequest httpServletRequest,Model model) {  
+            model.addAttribute("iterable", service.getAll());
+        return  "showPersons";        
+    }
+                                        @RequestMapping(value="/chosenByUser/{id}",method=RequestMethod.GET)
+        public String showById(HttpServletRequest httpServletRequest,Model model,@PathVariable("id") int id) {
+            model.addAttribute("el", service.getById(id));
+            //model.addAttribute("unit", new Unit());
+        return  "showPerson";        
+    }
+                                                    @RequestMapping(value="/save",method=RequestMethod.GET)
+        public String save(HttpServletRequest httpServletRequest,Model model ) {            
+            String id = httpServletRequest.getParameter("id");
+            String name = httpServletRequest.getParameter("name");
+            String lastName = httpServletRequest.getParameter("lastName");
+            String email = httpServletRequest.getParameter("email");
+            //Unit room = (Unit)(httpServletRequest.getParameter("unit"));
+        Person person = new Person(name, lastName, email);
+            person.setId(Integer.valueOf(id));
+            service.save(person);
+            
+        return  "home";        
+    }
+                                            @RequestMapping(value="/delete/{id}",method=RequestMethod.GET)
+        public String deleteById(HttpServletRequest httpServletRequest,Model model,@PathVariable("id") int id) {
+            //model.addAttribute("el", service.getById(id));
+            service.deleteById(id);
+        return  "home"; 
+        }
+                            @RequestMapping(value="/byLastName",method=RequestMethod.GET)
+        public String showByShortName(HttpServletRequest httpServletRequest,Model model) {
+            String lastName = httpServletRequest.getParameter("lastName");
+            model.addAttribute("iterable", service.getByLastName(lastName));
+        return  "showPersons";        
+    }
 }

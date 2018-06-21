@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Adding item</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+                <style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+table td {
+    width: 250px;
+    white-space: nowrap;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+</style>
+        
+    </head>
+    <body>
+
+        <table>
+              <tr>
+    <th>Id</th>
+    <th>Imię</th>
+    <th>Nazwisko</th>
+    <th>Email</th>    
+  </tr>
+   <th:block th:each="el : ${iterable}">
+      <tr>
+          
+         <td th:text="${el.id}">...</td>
+         <td th:text="${el.name}">...</td>
+         <td th:text="${el.lastName}">...</td>
+         <td th:text="${el.email}">...</td>
+         <td><form  method="get" th:action="@{/person/chosenByUser/{path}(path=${el.id})}">
+                 <button type="submit">Szczegóły/Edycja</button></form></td>
+         <td><form  method="get" th:action="@{/person/delete/{path}(path=${el.id})}">
+                 <button type="submit">Usuń</button></form></td>
+      </tr>
+<!--      <tr>
+         <td colspan="2" th:text="${user.address}">...</td>
+      </tr>-->
+   </th:block>
+</table>
+         
+    </body>
+</html>

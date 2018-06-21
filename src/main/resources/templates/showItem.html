@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Adding item</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+
+<form  method="get" action="/item/save" >        
+        <table>
+<!--   <th:block th:each="el : ${iterable}">-->
+
+      <tr>          
+          <td > Id:</td ><td > <input type="text" name="id" th:value="${el.id}"/> </td>
+      </tr>
+      <tr>          
+               <td >Nazwa:</td ><td > <input type="text" name="name" th:value="${el.name}"/></td>
+      </tr>
+            <tr>          
+               <td >Kod:</td ><td > <input type="text" name="code" th:value="${el.code}"/></td>
+      </tr>
+      <tr>          
+               <td >Opis:</td ><td > <input type="text" name="description" th:value="${el.description}"/></td>
+      </tr>
+            <tr>          
+               <td >Lokalizacja</td ><td > <input type="text" name="location" th:value="${el.location}"/></td>
+      </tr>
+                  <tr>          
+               <td >Osoba</td ><td > <input type="text" name="person" th:value="${el.person}"/></td>
+      </tr>
+                  <tr>          
+               <td >Jednostka</td ><td > <input type="text" name="unit" th:value="${el.unit}"/></td>
+      </tr>
+                <td ><button type="submit">Zapisz</button></td>
+      </tr>
+</table>
+             </form>
+
+         
+    </body>
+</html>

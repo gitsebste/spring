@@ -39,4 +39,12 @@ return locationRepository.findAll();
     public void save(Location location) {
         locationRepository.save(location);
     }
+
+    public Location getById(int id) {
+        return locationRepository.findById(id);
+    }
+
+    public void deleteById(int id) {
+        locationRepository.deleteById(id);
+    }
 }

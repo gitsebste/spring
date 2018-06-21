@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Adding item</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+
+<form  method="get" action="/person/save" >        
+        <table>
+<!--   <th:block th:each="el : ${iterable}">-->
+
+      <tr>          
+          <td > Id:</td ><td > <input type="text" name="id" th:value="${el.id}"/> </td>
+      </tr>
+      <tr>          
+               <td >Imię:</td ><td > <input type="text" name="name" th:value="${el.name}"/></td>
+      </tr>
+            <tr>          
+               <td >Nazwisko:</td ><td > <input type="text" name="lastName" th:value="${el.lastName}"/></td>
+      </tr>
+      <tr>          
+               <td >Email:</td ><td > <input type="text" name="email" th:value="${el.email}"/></td>
+      </tr>
+            <tr>          
+               <td >Jednostka:</td ><td > <input type="text" name="unit" th:value="${el.unit}"/></td>
+      </tr>
+                <td ><button type="submit">Zapisz</button></td>
+      </tr>
+</table>
+             </form>
+
+         
+    </body>
+</html>

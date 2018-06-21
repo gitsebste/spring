@@ -21,4 +21,6 @@ public interface PersonRepository extends CrudRepository<Person, Integer>{
     public Person findByEmail(String email);
     public List<Person> findByUnitShortName(String unitShortName);
     public List<Person> findByUnitId(Integer unitId);
+
+    public Iterable<Person> findByLastName(String lastName);
 }

@@ -40,4 +40,8 @@ return itemRepository.findAll();
                if(itemRepository==null)System.out.println("itemRepository==null");
                itemRepository.save(i);
     }    
+
+    public Item getById(int id) {
+        return itemRepository.findById(id);
+    }
 }
