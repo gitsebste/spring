@@ -9,23 +9,36 @@ and open the template in the editor.
         <title>Adding item</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
+        
+                        <style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+table td {
+    width: 250px;
+    white-space: nowrap;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+</style>
+       </head> 
     <body>
-       
-        
-<!--                <form  method="get" action="/unit/byShortName" >
-            <table>
-                <tr>
-                    <td>Jednostka: szukanie po krótkiej nazwie:
-                     <input type="text" name="shortName" />
-                        <button type="submit">Szukaj</button></td>
-                </tr>
-            </table>
-        </form>-->
-        
-        
-        
+
         <table>
+              <tr>
+    <th>Id</th>
+    <th>Nazwa</th>
+    <th>Budynek</th>
+    <th>Pokój</th> 
+    <th>Piętro</th> 
+              </tr>
+        
+        
+        
+        
    <th:block th:each="el : ${iterable}">
       <tr>
           
