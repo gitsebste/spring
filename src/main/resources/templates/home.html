@@ -118,6 +118,19 @@ th, td {
                 </tr>
             </table>
         </form>
+                <form  method="get" action="/person/connectToUnit" >
+            <table>
+                <tr>
+                    <td>Osoba: przypisz do jednostki</td></tr>
+                <tr><td >    Krótka nazwa jednostki: 
+                        <input  type="text" name="shortName" size="5"/></td>
+                <td>Osoba id: 
+                        <input type="text" name="id" size="5"/>
+                    </td>
+                        <td><button type="submit">Przypisz</button></td>
+                </tr>
+            </table>
+        </form>
         
         
         
@@ -142,7 +155,55 @@ th, td {
                 </tr>
             </table>
         </form>
-        
+        <form  method="get" action="/item/connectToUnit" >
+            <table>
+                <tr>
+                    <td>Przedmiot: przypisz do jednostki</td></tr>
+                <tr><td >    Krótka nazwa jednostki: 
+                        <input  type="text" name="shortName" size="5"/></td>
+                <td>Przedmiot id: 
+                        <input type="text" name="id" size="5"/>
+                    </td>
+                        <td><button type="submit">Przypisz</button></td>
+                </tr>
+            </table>
+        </form>
+                <form  method="get" action="/item/connectToPerson" >
+            <table>
+                <tr>
+                    <td>Przedmiot: przypisz do osoby</td></tr>
+                <tr><td >    Osoba id: 
+                        <input  type="text" name="personId" size="5"/></td>
+                <td>Przedmiot id: 
+                        <input type="text" name="id" size="5"/>
+                    </td>
+                        <td><button type="submit">Przypisz</button></td>
+                </tr>
+            </table>
+        </form>
+                <form  method="get" action="/item/connectToLocation" >
+            <table>
+                <tr>
+                    <td>Przedmiot: przypisz do lokalizacji</td></tr>
+                <tr><td >    Lokalizacja id: 
+                        <input  type="text" name="locationId" size="5"/></td>
+                <td>Przedmiot id: 
+                        <input type="text" name="id" size="5"/>
+                    </td>
+                        <td><button type="submit">Przypisz</button></td>
+                </tr>
+            </table>
+        </form>        
+                                        <form  method="get" action="/item/showByUnitShortName" >
+            <table>
+                <tr>
+                    <td>Przedmiot: wszystkie w jednostce</td>
+                    <td>Krótka nazwa jednostki: 
+                        <input type="text" name="shortName" size="5"/></td>
+                        <td><button type="submit">Pokaż wszystkie</button></td>
+                </tr>
+            </table>
+        </form>
         
         
         

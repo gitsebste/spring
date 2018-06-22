@@ -8,6 +8,9 @@ package com.example.demo.controller;
 import com.example.demo.domain.Item;
 import com.example.demo.domain.Person;
 import com.example.demo.service.ItemService;
+import com.example.demo.service.LocationService;
+import com.example.demo.service.PersonService;
+import com.example.demo.service.UnitService;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,7 +28,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ItemController {
     
     
-    ItemService service;
+    ItemService service;UnitService uservice;PersonService pservice ;LocationService lservice ;
+
+    @Autowired
+    public void setLservice(LocationService lservice) {
+        this.lservice = lservice;
+    }
+
+    @Autowired
+    public void setPservice(PersonService pservice) {
+        this.pservice = pservice;
+    }
+
+    @Autowired
+    public void setUservice(UnitService uservice) {
+        this.uservice = uservice;
+    }
 
     public ItemService getService() {
         return service;
@@ -81,6 +99,39 @@ public class ItemController {
             model.addAttribute("iterable", service.getAll());
         return  "showItems";        
     }
+        @RequestMapping(value="/showByUnitShortName",method=RequestMethod.GET)
+        public String showByUnitShortName(HttpServletRequest httpServletRequest,Model model) {
+            String shortName = httpServletRequest.getParameter("shortName");
+            model.addAttribute("iterable", service.getByUnitShortName(shortName));
+        return  "showItems";        
+    }
+        @RequestMapping(value="/connectToUnit",method=RequestMethod.GET)
+        public String connectToUnit(HttpServletRequest httpServletRequest,Model model) {
+            String shortName = httpServletRequest.getParameter("shortName");
+            String id = httpServletRequest.getParameter("id");
+        Item item = service.getById(Integer.valueOf(id));
+        item.setUnit(uservice.getByShortName(shortName));
+        service.save(item);
+        return  "home";        
+    }    
+                @RequestMapping(value="/connectToPerson",method=RequestMethod.GET)
+        public String connectToPerson(HttpServletRequest httpServletRequest,Model model) {
+            String personId = httpServletRequest.getParameter("personId");
+            String id = httpServletRequest.getParameter("id");
+        Item item = service.getById(Integer.valueOf(id));
+        item.setPerson(pservice.getById(Integer.valueOf(personId)));
+        service.save(item);
+        return  "home";        
+    }
+                @RequestMapping(value="/connectToLocation",method=RequestMethod.GET)
+        public String connectToLocation(HttpServletRequest httpServletRequest,Model model) {
+            String locationId = httpServletRequest.getParameter("locationId");
+            String id = httpServletRequest.getParameter("id");
+        Item item = service.getById(Integer.valueOf(id));
+        item.setLocation(lservice.getById(Integer.valueOf(locationId)));
+        service.save(item);
+        return  "home";        
+    }        
         @RequestMapping(value="/chosenByUser/{id}",method=RequestMethod.GET)
         public String showById(HttpServletRequest httpServletRequest,Model model,@PathVariable("id") int id) {
             model.addAttribute("el", service.getById(id));
@@ -92,8 +143,17 @@ public class ItemController {
             String name = httpServletRequest.getParameter("name");
             String code = httpServletRequest.getParameter("code");
             String description = httpServletRequest.getParameter("description");
+            String unit = httpServletRequest.getParameter("unit");
+            String person = httpServletRequest.getParameter("person");
+            String location = httpServletRequest.getParameter("location");
+            
         Item item = new Item(code, name, description);
+        if(unit.equals("") || unit==null)item.setUnit(null);
             item.setId(Integer.valueOf(id));
+        if(person.equals("") || person==null)item.setPerson(null);
+            item.setId(Integer.valueOf(id));
+        if(location.equals("") || location==null)item.setLocation(null);
+            item.setId(Integer.valueOf(id));            
             service.save(item);
             
         return  "home";        

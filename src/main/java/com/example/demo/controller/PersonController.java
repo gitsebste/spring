@@ -106,8 +106,10 @@ public class PersonController {
             String name = httpServletRequest.getParameter("name");
             String lastName = httpServletRequest.getParameter("lastName");
             String email = httpServletRequest.getParameter("email");
-            //Unit room = (Unit)(httpServletRequest.getParameter("unit"));
+            String unit = httpServletRequest.getParameter("unit");            
+            
         Person person = new Person(name, lastName, email);
+        if(unit.equals("") || unit==null)person.setUnit(null);
             person.setId(Integer.valueOf(id));
             service.save(person);
             
@@ -125,4 +127,13 @@ public class PersonController {
             model.addAttribute("iterable", service.getByLastName(lastName));
         return  "showPersons";        
     }
+                @RequestMapping(value="/connectToUnit",method=RequestMethod.GET)
+        public String connectToUnit(HttpServletRequest httpServletRequest,Model model) {
+            String shortName = httpServletRequest.getParameter("shortName");
+            String id = httpServletRequest.getParameter("id");
+        Person person = service.getById(Integer.valueOf(id));
+        person.setUnit(uservice.getByShortName(shortName));
+        service.save(person);
+        return  "home";        
+    } 
 }

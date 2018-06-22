@@ -44,4 +44,8 @@ return itemRepository.findAll();
     public Item getById(int id) {
         return itemRepository.findById(id);
     }
+
+    public Iterable<Item> getByUnitShortName(String shortName) {
+        return itemRepository.findByUnitShortName(shortName);
+    }
 }
