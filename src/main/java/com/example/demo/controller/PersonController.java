@@ -89,10 +89,16 @@ public class PersonController {
         
         return  "addPerson_1";        
     }
-                        @RequestMapping(value="/showAll",method=RequestMethod.GET)
+        @RequestMapping(value="/showAll",method=RequestMethod.GET)
         public String showAll(HttpServletRequest httpServletRequest,Model model) {  
             model.addAttribute("iterable", service.getAll());
         return  "showPersons";        
+    }
+        @RequestMapping(value="/showFromUnit",method=RequestMethod.GET)
+        public String showFromUnit(HttpServletRequest httpServletRequest,Model model) {  
+            String shortName = httpServletRequest.getParameter("shortName");
+            model.addAttribute("iterable", service.getByUnitShortName(shortName));
+        return  "showPersons";    
     }
                                         @RequestMapping(value="/chosenByUser/{id}",method=RequestMethod.GET)
         public String showById(HttpServletRequest httpServletRequest,Model model,@PathVariable("id") int id) {

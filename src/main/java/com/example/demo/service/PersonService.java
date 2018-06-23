@@ -50,4 +50,8 @@ return personRepository.findAll();
     public Iterable<Person> getByLastName(String lastName) {
         return personRepository.findByLastName(lastName);
     }
+
+    public Iterable<Person> getByUnitShortName(String shortName) {
+        return personRepository.findByUnitShortName(shortName);
+    }
 }

@@ -44,7 +44,7 @@ th, td {
             <table>
                 <tr>
                     <td>Jednostka: szukanie po krótkiej nazwie</td>
-                     <td><input type="text" name="shortName" /></td>
+                     <td>Krótka nazwa jednostki: <input type="text" name="shortName" size="5"/></td>
                         <td><button type="submit">Szukaj</button></td>
                 </tr>
             </table>
@@ -101,11 +101,20 @@ th, td {
                 </tr>
             </table>
         </form>
+        <form  method="get" action="/person/showFromUnit" >
+            <table>
+                <tr>
+                    <td>Osoba: wszystkie osoby jednostki</td>
+                    <td>Krótka nazwa jednostki: <input type="text" name="shortName" size="5"/></td>
+                        <td><button type="submit">Pokaż wszystkie</button></td>
+                </tr>
+            </table>
+        </form>
                                          <form  method="get" action="/person/byLastName" >
             <table>
                 <tr>
                     <td>Osoba: szukanie po nazwisku</td> 
-                    <td><input type="text" name="lastName" /></td>
+                    <td>Nazwisko: <input type="text" name="lastName" /></td>
                         <td><button type="submit">Szukaj</button></td>
                 </tr>
             </table>
